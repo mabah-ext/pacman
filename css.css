@@ -30,6 +30,7 @@ body, #game, #info, #lives {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  gap: 1rem;
 }
 
 body {
@@ -78,13 +79,10 @@ body {
 .live {
   width: 3.2rem;
   height: 2.6rem;
-  background-image: url("sprites.png");
-  background-position: -26rem -3.2rem;
 }
 
 @media (max-width: 600px), (max-height: 700px) {
   .live {
-    background-image: url(sprites_small.png);
   }
 }
 
