@@ -256,9 +256,10 @@ body {
 
 .big-point {
     content: url('./assets/big-point.svg');
-    width: 2rem;
-    height: 2rem;
+    width: 3rem;
+    height: 3rem;
     position: absolute;
+    z-index: 1000;
 }
 
 .gate {
@@ -323,7 +324,6 @@ body {
 
 .yellow-visible {
     content: url('./assets/pacman.svg');
-    -webkit-transition: -webkit-transform var(--yellow-animation-length) linear;
     z-index: 100;
 }
 

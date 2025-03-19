@@ -615,16 +615,24 @@ function getSprite(i) {
         }
         characters[i].characterNode.style.content = `url(${spriteUrl})`;
     } else {
+        // Gestion des fantômes
+        const ghostName = characters[i].name; // "red", "pink", "blue", "orange"
         if (characters[i].mode == "normal") {
-            spriteX = ghostSprite[characters[i].direction];
-            spriteY = 9.6 + 3.2 * i;
+            spriteUrl = `./assets/ghost.svg`;
         } else if (characters[i].mode == "frightened") {
-            spriteX = isFrightenedWhite == true ? 32 : 25.6;
-            spriteY = 12.8;
-        } else {
-            spriteX = eatenSprite[characters[i].direction];
-            spriteY = 16;
+            spriteUrl = './assets/ghost-frightened.svg'; // SVG unique pour l'état effrayé
+            // Si tu as deux états (bleu et blanc), tu peux utiliser isFrightenedWhite
+            if (isFrightenedWhite) {
+                spriteUrl = './assets/ghost-frightened-white.svg'; // Par exemple
+            }
+        } else if (characters[i].mode == "eaten") {
+            spriteUrl = './assets/ghost-eaten.svg'; // SVG pour l'état mangé
         }
+        characters[i].characterNode.style.content = `url(${spriteUrl})`;
+
+        // Supprime les propriétés de sprite si elles ne sont plus utilisées
+        root.removeProperty(`--${ghostName}-sprite-x`);
+        root.removeProperty(`--${ghostName}-sprite-y`);
     }
 
     root.setProperty(`--${characters[i].name}-sprite-x`, `-${spriteX}rem`);
