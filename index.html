@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Feedgy pacman</title>
     <link rel="stylesheet" href="css.css">
     <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Pacman.svg/542px-Pacman.svg.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap" rel="stylesheet">
@@ -12,22 +12,33 @@
 </head>
 
 <body>
-    <h3 id="game-start">click Anywhere to play</h3>
-    <div id="game">
-        <div id="info">
-            <h3 id="score">Score 0</h3>
-            <div id="lives">
-                <img class="live" src="feedgy-small.png" alt="|"/>
-                <img class="live" src="feedgy-small.png" alt="|"/>
-                <img class="live" src="feedgy-small.png" alt="|"/>
-            </div>
+<div id="game-start">
+    <img class="feedgy-logo" src="./assets/feedgy.svg" alt="feedgy">
+    <h3>click Anywhere to play</h3>
+    <div class="suns">
+        <img class="sun" src="./assets/sunny.svg" alt="Sun">
+        <img class="sun" src="./assets/sunny.svg" alt="Sun">
+        <img class="sun" src="./assets/sunny.svg" alt="Sun">
+    </div>
+</div>
+
+<div id="game">
+    <div id="info">
+        <div id="score-board">
+            <img src="./assets/big-point.svg" alt="|"/>
+            <h3 id="score">Score 0 KWc</h3>
         </div>
-        <div id="game-board">
-            <p id="start">ready!</p>
+        <div id="lives">
+            <img class="live" src="./assets/pacman.svg" alt="|"/>
+            <img class="live" src="./assets/pacman.svg" alt="|"/>
+            <img class="live" src="./assets/pacman.svg" alt="|"/>
         </div>
     </div>
-
-    <script src="j.js"></script>
+    <div id="game-board">
+        <p id="start">ready!</p>
+    </div>
+</div>
+<script src="pacman.js"></script>
 </body>
 
 </html>

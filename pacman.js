@@ -259,7 +259,7 @@ function setStartingProperties() {
     start.style.display = "block";
     ghostMode = "scatter";
     ghostsEaten = 0;
-    scoreElement.innerHTML = "Score " + score;
+    scoreElement.innerHTML = "Score " + score + " KWc";
 
     for (let i = 0; i < characters.length; i++) {
         characters[i].position = startingPositions[i];
@@ -337,7 +337,7 @@ function checkCollisions() {
         let ghostNewPosition;
 
         if(distance == 0) {
-           requirement -30;
+           requirement = -30;
            yellowNewPosition = characters[0].position + positionChange[characters[0].direction] + oppositeDirection[positionChange[characters[i].direction]];
            ghostNewPosition = characters[i].position + positionChange[characters[i].direction] + oppositeDirection[positionChange[characters[0].direction]]; 
         }
@@ -573,8 +573,25 @@ function getSprite(i) {
     let spriteX;
     let spriteY;
     if (i == 0) {
-        spriteX = 3.2;
-        spriteY = yellowSprite[characters[i].direction];
+        // Pour Pacman (yellow)
+        let spriteUrl;
+        switch(characters[i].direction) {
+            case "ArrowUp":
+                spriteUrl = './assets/pacman-up.svg';
+                break;
+            case "ArrowDown":
+                spriteUrl = './assets/pacman-down.svg';
+                break;
+            case "ArrowLeft":
+                spriteUrl = './assets/pacman-left.svg';
+                break;
+            case "ArrowRight":
+                spriteUrl = './assets/pacman-right.svg';
+                break;
+            default:
+                spriteUrl = './assets/pacman.svg';
+        }
+        characters[i].characterNode.style.content = `url(${spriteUrl})`;
     } else {
         if (characters[i].mode == "normal") {
             spriteX = ghostSprite[characters[i].direction];
@@ -608,14 +625,22 @@ async function changePosition(i) {
             characters[i].characterNode.classList.add(`${characters[i].name}-animation-move`);
         }
         characters[i].animationStart = performance.now();
+
         setTimeout(() => {
             if (characters[i].status == "freeze") return;
 
+            // Retirer complètement Pacman de l'ancienne position
             characters[i].characterNode.classList.remove(`${characters[i].name}-animation-move`, `${characters[i].name}-visible`);
             characters[i].characterNode.style.transform = "";
+            characters[i].characterNode.style.content = ""; // Réinitialiser le content pour éviter les résidus
+
+            // Mettre à jour la position
             characters[i].position = characters[i].nextPosition;
             characters[i].characterNode = elements[characters[i].position].children[i];
+
+            // Ajouter Pacman à la nouvelle position
             characters[i].characterNode.classList.add(`${characters[i].name}-visible`);
+            getSprite(i); // Mettre à jour l'image SVG selon la direction
 
             if (i == 0) {
                 eatPoint(i);
@@ -623,11 +648,10 @@ async function changePosition(i) {
                 ghostRetreat(i);
             }
 
-            resolve("")
-        }, characters[i].animationLength)
-
-    })
-    characterMove(i)
+            resolve("");
+        }, characters[i].animationLength);
+    });
+    characterMove(i);
 }
 function eatPoint(i) {
     const point = elements[characters[i].position].children[5];
@@ -646,7 +670,7 @@ function eatPoint(i) {
             }
         }
 
-        scoreElement.innerHTML = "Score " + score;
+        scoreElement.innerHTML = "Score " + score + " KWc";
         point.remove();
 
         if (points == 244) {
@@ -762,7 +786,7 @@ function gameFreeze(i) {
     }, 1000)
     ghostsEaten++;
     score += 2 ** ghostsEaten * 100;
-    scoreElement.innerHTML = "Score " + score;
+    scoreElement.innerHTML = "Score " + score + " KWc";
 }
 function ghostRetreat(i) {
     characters[i].status = "freeze";
