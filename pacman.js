@@ -4,6 +4,10 @@ const gameStart = document.getElementById('game-start')
 const start = document.getElementById("start");
 const scoreElement = document.getElementById("score");
 const lives = document.getElementById("lives");
+const gameOverScreen = document.getElementById("game-over-screen");
+const finalScoreValue = document.getElementById("final-score-value");
+const restartButton = document.getElementById("restart-button");
+
 const root = document.documentElement.style;
 
 let soundtrack = document.createElement("audio");
@@ -57,62 +61,62 @@ const characters = [{
     animationLength: undefined,
     animationStart: undefined,
 },
-{
-    name: "red",
-    direction: "ArrowLeft",
-    directionOld: undefined,
-    directionList: ["ArrowUp", "ArrowUp", "ArrowUp"],
-    position: 38,
-    nextPosition: undefined,
-    scatterTarget: 27,
-    mode: "normal",
-    status: "normal",
-    characterNode: undefined,
-    animationLength: undefined,
-    animationStart: undefined,
-},
-{
-    name: "pink",
-    direction: "ArrowDown",
-    directionOld: undefined,
-    directionList: ["ArrowDown", "ArrowUp", "ArrowUp", "ArrowUp", "ArrowUp"],
-    position: 406,
-    nextPosition: undefined,
-    scatterTarget: 0,
-    mode: "normal",
-    status: "normal",
-    characterNode: undefined,
-    animationLength: undefined,
-    animationStart: undefined,
-},
-{
-    name: "blue",
-    direction: "ArrowUp",
-    directionOld: undefined,
-    directionList: ["ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowRight", "ArrowRight", "ArrowUp", "ArrowUp", "ArrowUp"],
-    position: 404,
-    nextPosition: undefined,
-    scatterTarget: 867,
-    mode: "normal",
-    status: "normal",
-    characterNode: undefined,
-    animationLength: undefined,
-    animationStart: undefined,
-},
-{
-    name: "orange",
-    direction: "ArrowUp",
-    directionOld: undefined,
-    directionList: ["ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowLeft", "ArrowUp", "ArrowUp", "ArrowUp"],
-    position: 408,
-    nextPosition: undefined,
-    scatterTarget: 840,
-    mode: "normal",
-    status: "normal",
-    characterNode: undefined,
-    animationLength: undefined,
-    animationStart: undefined,
-},
+    {
+        name: "red",
+        direction: "ArrowLeft",
+        directionOld: undefined,
+        directionList: ["ArrowUp", "ArrowUp", "ArrowUp"],
+        position: 38,
+        nextPosition: undefined,
+        scatterTarget: 27,
+        mode: "normal",
+        status: "normal",
+        characterNode: undefined,
+        animationLength: undefined,
+        animationStart: undefined,
+    },
+    {
+        name: "pink",
+        direction: "ArrowDown",
+        directionOld: undefined,
+        directionList: ["ArrowDown", "ArrowUp", "ArrowUp", "ArrowUp", "ArrowUp"],
+        position: 406,
+        nextPosition: undefined,
+        scatterTarget: 0,
+        mode: "normal",
+        status: "normal",
+        characterNode: undefined,
+        animationLength: undefined,
+        animationStart: undefined,
+    },
+    {
+        name: "blue",
+        direction: "ArrowUp",
+        directionOld: undefined,
+        directionList: ["ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowRight", "ArrowRight", "ArrowUp", "ArrowUp", "ArrowUp"],
+        position: 404,
+        nextPosition: undefined,
+        scatterTarget: 867,
+        mode: "normal",
+        status: "normal",
+        characterNode: undefined,
+        animationLength: undefined,
+        animationStart: undefined,
+    },
+    {
+        name: "orange",
+        direction: "ArrowUp",
+        directionOld: undefined,
+        directionList: ["ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowUp", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowLeft", "ArrowUp", "ArrowUp", "ArrowUp"],
+        position: 408,
+        nextPosition: undefined,
+        scatterTarget: 840,
+        mode: "normal",
+        status: "normal",
+        characterNode: undefined,
+        animationLength: undefined,
+        animationStart: undefined,
+    },
 ];
 let elements;
 let points = 0;
@@ -128,7 +132,7 @@ let livesLost = 0;
 let gameStartLength = 4200;
 let whichMunch = 1;
 
-document.addEventListener("click", startGame); 
+document.addEventListener("click", startGame);
 
 function startGame() {
     gameStart.style.display = "none";
@@ -139,8 +143,8 @@ function startGame() {
 
 soundtrack.addEventListener('timeupdate', () => {
     var buffer = 0.3;
-    if(soundtrack.currentTime > soundtrack.duration - buffer){
-        soundtrack.currentTime = 0; 
+    if (soundtrack.currentTime > soundtrack.duration - buffer) {
+        soundtrack.currentTime = 0;
         soundtrack.play()
     }
 });
@@ -169,6 +173,7 @@ function startLevel() {
         ghostModeInterval = setTimeout(changeModes, 5000);
     }, gameStartLength)
 }
+
 function makeLevel() {
     const gameClass = {
         0: "blank",
@@ -183,7 +188,7 @@ function makeLevel() {
         9: "right wall",
         10: "left wall",
         11: "gate wall",
-        12: "wall-empty" 
+        12: "wall-empty"
     }
 
 
@@ -209,7 +214,7 @@ function makeLevel() {
         0, 8, 8, 8, 8, 3, 126, 6, 7, 26, 6, 12, 12, 15, 14, 12, 12, 7, 26, 6, 7, 126, 2, 8, 8, 8, 8, 1,
         9, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 11, 13, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 9,
         9, 126, 4, 10, 10, 5, 126, 4, 10, 10, 10, 5, 126, 11, 13, 126, 4, 10, 10, 10, 5, 126, 4, 10, 10, 5, 126, 9,
-        9, 126, 6, 12, 15, 13, 126, 6,  12,  12,  12, 7, 126, 6, 7, 126, 6,  12,  12,  12, 7, 126, 11, 14,  12, 7, 126, 9,
+        9, 126, 6, 12, 15, 13, 126, 6, 12, 12, 12, 7, 126, 6, 7, 126, 6, 12, 12, 12, 7, 126, 11, 14, 12, 7, 126, 9,
         9, 262, 126, 126, 11, 13, 126, 126, 126, 126, 126, 126, 126, 26, 26, 126, 126, 126, 126, 126, 126, 126, 11, 13, 126, 126, 262, 9,
         20, 10, 5, 126, 11, 13, 126, 4, 5, 126, 4, 10, 10, 10, 10, 10, 10, 5, 126, 4, 5, 126, 11, 13, 126, 4, 10, 22,
         21, 12, 7, 126, 6, 7, 126, 11, 13, 126, 6, 12, 12, 15, 14, 12, 12, 7, 126, 11, 13, 126, 6, 7, 126, 6, 12, 23,
@@ -230,7 +235,7 @@ function makeLevel() {
                 character.className = characters[j].name;
                 element.append(character);
             }
-            if(gameArray[i] / 100 > 1) {
+            if (gameArray[i] / 100 > 1) {
                 let character = document.createElement("DIV");
                 character.className = Math.floor(gameArray[i] / 100) == 1 ? "point" : "big-point";
                 element.append(character);
@@ -248,6 +253,7 @@ function makeLevel() {
     elements = Array.from(gameBoard.children).splice(1);
     transformStartingElements();
 }
+
 function setStartingProperties() {
     newLevel = undefined;
     window.removeEventListener("keydown", getDirection);
@@ -280,7 +286,7 @@ function setStartingProperties() {
 
     setTimeout(() => {
         window.addEventListener("keydown", getDirection);
-        document.addEventListener('touchstart', handleTouchStart);        
+        document.addEventListener('touchstart', handleTouchStart);
         document.addEventListener('touchmove', handleTouchMove);
 
         for (let i = 2; i < 5; i++) {
@@ -292,6 +298,7 @@ function setStartingProperties() {
         getSprite(0);
     }, gameStartLength)
 }
+
 //Transform has to be set before class visible is added in setStartingProperties cause transform will transition instead of changing instantly
 function transformStartingElements() {
     for (let i = 0; i < 5; i++) {
@@ -304,6 +311,7 @@ function transformStartingElements() {
         }
     }
 }
+
 function changeModes() {
     if (ghostMode === "scatter") {
         ghostMode = "chase";
@@ -314,6 +322,7 @@ function changeModes() {
     }
     changeGhostDirections();
 }
+
 function checkCollisions() {
     const yellowTransform = new WebKitCSSMatrix(getComputedStyle(characters[0].characterNode).transform);
     let yellowTranslateX = yellowTransform.e;
@@ -336,10 +345,10 @@ function checkCollisions() {
         let yellowNewPosition;
         let ghostNewPosition;
 
-        if(distance == 0) {
-           requirement = -30;
-           yellowNewPosition = characters[0].position + positionChange[characters[0].direction] + oppositeDirection[positionChange[characters[i].direction]];
-           ghostNewPosition = characters[i].position + positionChange[characters[i].direction] + oppositeDirection[positionChange[characters[0].direction]]; 
+        if (distance == 0) {
+            requirement = -30;
+            yellowNewPosition = characters[0].position + positionChange[characters[0].direction] + oppositeDirection[positionChange[characters[i].direction]];
+            ghostNewPosition = characters[i].position + positionChange[characters[i].direction] + oppositeDirection[positionChange[characters[0].direction]];
         }
         if (distance == 1) {
             requirement = 10;
@@ -356,7 +365,7 @@ function checkCollisions() {
         } else if (distance != 0) {
             continue;
         }
-        if(window.innerWidth < 600 || window.innerHeight < 700) {
+        if (window.innerWidth < 600 || window.innerHeight < 700) {
             requirement /= 2;
         }
 
@@ -374,7 +383,7 @@ function checkCollisions() {
         } else {
             ghostTranslateY = -Math.abs(ghostTranslateY);
             ghostTranslateX = -Math.abs(ghostTranslateX);
-        } 
+        }
 
         const transformDistance = yellowTranslateY + ghostTranslateY + yellowTranslateX + ghostTranslateX;
 
@@ -388,6 +397,7 @@ function checkCollisions() {
         }
     }
 }
+
 //i - character index
 function characterMove(i) {
     if (characters[i].status == "freeze") return;
@@ -395,7 +405,7 @@ function characterMove(i) {
     characters[i].nextPosition = getNewPosition(i);
 
     if (elements[characters[i].nextPosition].classList.contains("wall")) {
-        if(sound.src.includes("munch")) {
+        if (sound.src.includes("munch")) {
             sound.pause();
         }
         setTimeout(() => {
@@ -409,6 +419,7 @@ function characterMove(i) {
     getTransition(i);
     changePosition(i);
 }
+
 function getNewPosition(i) {
     if (i == 0) {
         getYellowDirection(i);
@@ -434,6 +445,7 @@ function getNewPosition(i) {
 
     return nextPosition;
 }
+
 function getYellowDirection(i) {
     if (characters[i].directionNew != undefined) {
         const newPosition = characters[i].position + positionChange[characters[i].directionNew];
@@ -444,6 +456,7 @@ function getYellowDirection(i) {
         }
     }
 }
+
 function getGhostDirection(i) {
     // so direction won't become undefined if newDirection has no move (like crossing tunnel)
     let newDirection = characters[i].directionOld = characters[i].direction;
@@ -455,7 +468,7 @@ function getGhostDirection(i) {
     } else if (ghostMode == "scatter") {
         target = characters[i].scatterTarget
     } else {
-        target = getChaseTarget(i) 
+        target = getChaseTarget(i)
     }
 
     for (let [direction, value] of Object.entries(positionChange)) {
@@ -472,6 +485,7 @@ function getGhostDirection(i) {
     }
     characters[i].direction = newDirection;
 }
+
 function getRandomDirection(i) {
     let nextPosition = characters[i].position + positionChange[characters[i].direction];
 
@@ -488,14 +502,15 @@ function getRandomDirection(i) {
         newPosition = characters[i].position + positionChange[newDirection];
 
     } while (elements[newPosition].classList.contains("wall") ||
-        oppositeDirection[newDirection] == characters[i].direction)
+    oppositeDirection[newDirection] == characters[i].direction)
 
     characters[i].direction = newDirection;
 }
+
 function getChaseTarget(i) {
     switch (i) {
         case 1:
-            if(characters[0].position == characters[i].position && !elements[characters[0].nextPosition].classList.contains("wall")) {
+            if (characters[0].position == characters[i].position && !elements[characters[0].nextPosition].classList.contains("wall")) {
                 return characters[0].position + positionChange[characters[0].direction];
             }
             return characters[0].position;
@@ -512,6 +527,7 @@ function getChaseTarget(i) {
             }
     }
 }
+
 function getBlueTarget() {
     const yellowPosition = characters[0].position + positionChange[characters[0].direction];
     const yellowRedDistanceX = yellowPosition % 28 - characters[1].position % 28;
@@ -529,12 +545,14 @@ function getBlueTarget() {
 
     return bluePositionX + bluePositionY * 28;
 }
+
 function calculateDistance(target, newGhostPosition) {
     const distanceX = Math.floor(target / 28) - Math.floor(newGhostPosition / 28);
     const distanceY = target % 28 - newGhostPosition % 28;
 
     return distanceX ** 2 + distanceY ** 2;
 }
+
 function getAnimationLength(i) {
     let animationLength;
     if (i == 0) {
@@ -569,13 +587,14 @@ function getAnimationLength(i) {
     root.setProperty(`--${characters[i].name}-animation-length`, animationLength + "ms");
     characters[i].animationLength = animationLength;
 }
+
 function getSprite(i) {
     let spriteX;
     let spriteY;
     if (i == 0) {
         // Pour Pacman (yellow)
         let spriteUrl;
-        switch(characters[i].direction) {
+        switch (characters[i].direction) {
             case "ArrowUp":
                 spriteUrl = './assets/pacman-up.svg';
                 break;
@@ -608,6 +627,7 @@ function getSprite(i) {
     root.setProperty(`--${characters[i].name}-sprite-x`, `-${spriteX}rem`);
     root.setProperty(`--${characters[i].name}-sprite-y`, `-${spriteY}rem`);
 }
+
 function getTransition(i) {
     const isGoingToRespawn = characters[i].mode == "eaten" && characters[i].nextPosition == 322;
     const transitionMove = {
@@ -619,6 +639,7 @@ function getTransition(i) {
 
     characters[i].characterNode.style.transform = `translate${transitionMove[characters[i].direction]}`;
 }
+
 async function changePosition(i) {
     await new Promise(resolve => {
         if (characters[i].mode != "eaten") {
@@ -653,6 +674,7 @@ async function changePosition(i) {
     });
     characterMove(i);
 }
+
 function eatPoint(i) {
     const point = elements[characters[i].position].children[5];
 
@@ -664,7 +686,7 @@ function eatPoint(i) {
             score += 50;
         } else {
             score += 10;
-            if(!sound.src.includes("munch") || sound.paused) {
+            if (!sound.src.includes("munch") || sound.paused) {
                 sound.src = `audio/munch.wav`;
                 sound.play();
             }
@@ -679,11 +701,12 @@ function eatPoint(i) {
         }
     } else {
         characters[i].mode = "normal";
-        if(sound.src.includes("munch")) {
+        if (sound.src.includes("munch")) {
             sound.pause();
         }
     }
 }
+
 function makeGhostsScared() {
     soundtrack.src = "audio/power_pellet.wav";
     soundtrack.play();
@@ -705,7 +728,7 @@ function makeGhostsScared() {
             }
             if (intervalCount == 10) {
                 clearInterval(changingBackInterval);
-                if(!soundtrack.src.includes("retreating")) {
+                if (!soundtrack.src.includes("retreating")) {
                     soundtrack.src = "audio/siren1.wav";
                     soundtrack.play();
                 }
@@ -728,6 +751,7 @@ function makeGhostsScared() {
         }, 300)
     }, 800)
 }
+
 function changeGhostDirections() {
     for (let i = 1; i < 5; i++) {
         if (characters[i].mode == "normal" &&
@@ -737,6 +761,7 @@ function changeGhostDirections() {
         }
     }
 }
+
 function gameFreeze(i) {
     sound.src = "audio/eat_ghost.wav";
     sound.play();
@@ -788,12 +813,13 @@ function gameFreeze(i) {
     score += 2 ** ghostsEaten * 100;
     scoreElement.innerHTML = "Score " + score + " KWc";
 }
+
 function ghostRetreat(i) {
     characters[i].status = "freeze";
     characters[i].characterNode.classList.add(`${characters[i].name}-retreat`)
 
     setTimeout(() => {
-        if(characters.some(char => char.mode == "frightened")) {
+        if (characters.some(char => char.mode == "frightened")) {
             soundtrack.src = "audio/power_pellet.wav";
         } else {
             soundtrack.src = "audio/siren1.wav";
@@ -811,6 +837,7 @@ function ghostRetreat(i) {
         ghostRevive(i, 0);
     }, i > 2 ? 250 : 150)
 }
+
 //revive animation progress
 function ghostRevive(i, progress) {
     if (characters[i].direction != characters[i].directionList[progress] &&
@@ -847,6 +874,8 @@ function ghostRevive(i, progress) {
         characterMove(i);
     }
 }
+
+// Fonction gameOver modifiée
 function gameOver() {
     stopAnimations();
     setTimeout(() => {
@@ -860,40 +889,39 @@ function gameOver() {
         setTimeout(() => {
             sound.src = "audio/death_2.wav";
             sound.play();
-        }, 1400)
+        }, 1400);
 
-        if (livesLost == 3) {
-            newLevel = true;
-            setTimeout(() => {
-                start.innerHTML = "Game&nbsp; Over";
-                start.style.display = "block";
-                start.style.color = "red";
-
-                setTimeout(() => {
-                    start.style.display = "none";
-                    start.style.color = "yellow";
-                    start.innerHTML = "READY!";
-
-                    hardReset();
-                    deleteGameBoard();
-                    game.style.visibility = "hidden";
-
-                    setTimeout(startLevel, 500)
-                }, 1500)
-            }, 1500)
-        } else {
-            newLevel = false;
-            gameStartLength = 2000;
-            setTimeout(() => {
-
+        setTimeout(() => {
+            if (livesLost === 3) { // Game Over complet seulement quand toutes les vies sont perdues
+                game.style.display = "none";
+                gameOverScreen.style.display = "flex";
+                finalScoreValue.textContent = `${score} KWc`;
+                newLevel = true;
+            } else {
+                // Si ce n'est pas la dernière vie, on relance juste le niveau
+                newLevel = false;
+                gameStartLength = 2000;
                 game.style.visibility = "hidden";
                 deleteClasses();
-                setTimeout(startLevel, 500)
-            }, 2000)
-        }
-    }, 1000)
-
+                setTimeout(startLevel, 500);
+            }
+        }, 1500);
+    }, 1000);
 }
+
+// Fonction restartGame corrigée
+function restartGame() {
+    gameOverScreen.style.display = "none";
+    game.style.display = "block"; // Réafficher le jeu
+    hardReset(); // Réinitialiser vies et score
+    deleteGameBoard(); // Supprimer l'ancien plateau
+    game.style.visibility = "hidden";
+    setTimeout(startLevel, 500); // Relancer le niveau
+}
+
+// Ajouter l'écouteur d'événement (assure-toi qu'il est bien placé après les définitions de fonctions)
+restartButton.addEventListener("click", restartGame);
+
 function gameWin() {
     stopAnimations();
     newLevel = true;
@@ -917,6 +945,7 @@ function gameWin() {
         }, 1500)
     }, 2000)
 }
+
 function stopAnimations(stop) {
     freezeCharacters(stop);
     for (let i = 0; i < 5; i++) {
@@ -939,11 +968,13 @@ function stopAnimations(stop) {
         }
     }
 }
+
 function deleteGameBoard() {
     for (let element of elements) {
         element.remove();
     }
 }
+
 function deleteClasses() {
     for (let i = 0; i < 5; i++) {
         if (characters[i].characterNode != undefined) {
@@ -953,6 +984,7 @@ function deleteClasses() {
         transformStartingElements();
     }
 }
+
 function hardReset() {
     livesLost = 0;
     score = 0;
@@ -963,6 +995,7 @@ function hardReset() {
         }
     }, 500)
 }
+
 function freezeCharacters(stop) {
     for (let i = 0; i < 5; i++) {
         if (stop == "stop" && characters[i].mode == "eaten") {
@@ -971,6 +1004,7 @@ function freezeCharacters(stop) {
         characters[i].status = "freeze";
     }
 }
+
 function getDirection(e) {
     switch (e.key) {
         case "ArrowUp":
@@ -981,14 +1015,15 @@ function getDirection(e) {
     }
 }
 
-let xDown = null;                                                        
-let yDown = null;                      
+let xDown = null;
+let yDown = null;
 
 function handleTouchStart(e) {
-    const firstTouch = e.touches[0];                               
+    const firstTouch = e.touches[0];
     xDown = firstTouch.clientX;
-    yDown = firstTouch.clientY;                     
-};                                                
+    yDown = firstTouch.clientY;
+};
+
 function handleTouchMove(e) {
     if (!xDown || !yDown) {
         return;
