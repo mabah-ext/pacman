@@ -16,7 +16,7 @@ body, #game, #info, #lives {
 }
 
 body {
-    -webkit-box-sizing: border-box;
+
     box-sizing: border-box;
     margin: 0;
     background-color: #000000;
@@ -40,7 +40,7 @@ body {
 }
 
 #info {
-    -webkit-box-sizing: border-box;
+
     box-sizing: border-box;
     width: 100%;
     -webkit-box-pack: justify;
@@ -77,7 +77,7 @@ body {
 #game-board {
     position: relative;
     overflow: hidden;
-    -webkit-box-sizing: border-box;
+
     box-sizing: border-box;
     width: 56rem;
     height: 62rem;
@@ -89,7 +89,7 @@ body {
 /* GAME BOARD GENERAL */
 #game-board > * {
     position: relative;
-    -webkit-box-sizing: border-box;
+
     box-sizing: border-box;
     width: 2rem;
     height: 2rem;
@@ -150,6 +150,40 @@ body {
     z-index: 1000;
 }
 
+#game-win-screen h1 {
+    color: #FCB814; /* Jaune Pacman pour la victoire */
+    font-size: 6rem;
+    margin: 2rem;
+    text-shadow: 0 0 10px #FCB814;
+}
+
+#game-win-screen .final-score {
+    color: #FFFFFF;
+    font-size: 3rem;
+    margin: 1rem;
+}
+
+#replay-button {
+    margin-top: 2rem;
+    padding: 1.5rem 3rem;
+    font-size: 2.5rem;
+    background-color: #00FF00; /* Vert pour la victoire */
+    color: #000000;
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+    font-family: "joystick", Arial, sans-serif;
+    transition: transform 0.2s;
+}
+
+#replay-button:hover {
+    transform: scale(1.1);
+}
+
+#replay-button:active {
+    transform: scale(0.95);
+}
+
 #game-over-screen h1 {
     color: #FF0000;
     font-size: 6rem;
@@ -201,7 +235,7 @@ body {
 }
 
 .wall > * {
-    -webkit-box-sizing: border-box;
+
     box-sizing: border-box;
     background-color: black;
     display: block;
@@ -290,8 +324,6 @@ body {
 .yellow-visible {
     content: url('./assets/pacman.svg');
     -webkit-transition: -webkit-transform var(--yellow-animation-length) linear;
-    transition: transform var(--yellow-animation-length) linear;
-    transition: transform var(--yellow-animation-length) linear, -webkit-transform var(--yellow-animation-length) linear;
     z-index: 100;
 }
 
@@ -299,8 +331,8 @@ body {
     background-position: var(--red-sprite-x) var(--red-sprite-y);
     -webkit-transition: -webkit-transform var(--red-animation-length) linear;
     transition: -webkit-transform var(--red-animation-length) linear;
-    transition: transform var(--red-animation-length) linear;
-    transition: transform var(--red-animation-length) linear, -webkit-transform var(--red-animation-length) linear;
+    
+    
     z-index: 104;
 }
 
@@ -308,8 +340,6 @@ body {
     background-position: var(--pink-sprite-x) var(--pink-sprite-y);
     -webkit-transition: -webkit-transform var(--pink-animation-length) linear;
     transition: -webkit-transform var(--pink-animation-length) linear;
-    transition: transform var(--pink-animation-length) linear;
-    transition: transform var(--pink-animation-length) linear, -webkit-transform var(--pink-animation-length) linear;
     z-index: 103;
 }
 
@@ -317,8 +347,6 @@ body {
     background-position: var(--blue-sprite-x) var(--blue-sprite-y);
     -webkit-transition: -webkit-transform var(--blue-animation-length) linear;
     transition: -webkit-transform var(--blue-animation-length) linear;
-    transition: transform var(--blue-animation-length) linear;
-    transition: transform var(--blue-animation-length) linear, -webkit-transform var(--blue-animation-length) linear;
     z-index: 102;
 }
 
@@ -326,8 +354,6 @@ body {
     background-position: var(--orange-sprite-x) var(--orange-sprite-y);
     -webkit-transition: -webkit-transform var(--orange-animation-length) linear;
     transition: -webkit-transform var(--orange-animation-length) linear;
-    transition: transform var(--orange-animation-length) linear;
-    transition: transform var(--orange-animation-length) linear, -webkit-transform var(--orange-animation-length) linear;
 }
 
 /* Animations */
@@ -508,49 +534,49 @@ body {
 
 @-webkit-keyframes redPinkRetreatPosition {
     0% {
-        -webkit-transform: translate(-1rem, 0);
+        
         transform: translate(-1rem, 0);
     }
     33% {
-        -webkit-transform: translate(-1rem, 2rem);
+        
         transform: translate(-1rem, 2rem);
     }
     66% {
-        -webkit-transform: translate(-1rem, 4rem);
+        
         transform: translate(-1rem, 4rem);
     }
     100% {
-        -webkit-transform: translate(-1rem, 6rem);
+        
         transform: translate(-1rem, 6rem);
     }
 }
 
 @keyframes redPinkRetreatPosition {
     0% {
-        -webkit-transform: translate(-1rem, 0);
+        
         transform: translate(-1rem, 0);
     }
     33% {
-        -webkit-transform: translate(-1rem, 2rem);
+        
         transform: translate(-1rem, 2rem);
     }
     66% {
-        -webkit-transform: translate(-1rem, 4rem);
+        
         transform: translate(-1rem, 4rem);
     }
     100% {
-        -webkit-transform: translate(-1rem, 6rem);
+        
         transform: translate(-1rem, 6rem);
     }
 }
 
 @-webkit-keyframes blueRetreatPosition {
     0% {
-        -webkit-transform: translate(-1rem, 0);
+        
         transform: translate(-1rem, 0);
     }
     60% {
-        -webkit-transform: translate(-1rem, 6rem);
+        
         transform: translate(-1rem, 6rem);
     }
     100% {
@@ -561,11 +587,11 @@ body {
 
 @keyframes blueRetreatPosition {
     0% {
-        -webkit-transform: translate(-1rem, 0);
+        
         transform: translate(-1rem, 0);
     }
     60% {
-        -webkit-transform: translate(-1rem, 6rem);
+        
         transform: translate(-1rem, 6rem);
     }
     100% {
@@ -576,11 +602,11 @@ body {
 
 @-webkit-keyframes orangeRetreatPosition {
     0% {
-        -webkit-transform: translate(-1rem, 0);
+        
         transform: translate(-1rem, 0);
     }
     60% {
-        -webkit-transform: translate(-1rem, 6rem);
+        
         transform: translate(-1rem, 6rem);
     }
     100% {
@@ -591,11 +617,11 @@ body {
 
 @keyframes orangeRetreatPosition {
     0% {
-        -webkit-transform: translate(-1rem, 0);
+        
         transform: translate(-1rem, 0);
     }
     60% {
-        -webkit-transform: translate(-1rem, 6rem);
+        
         transform: translate(-1rem, 6rem);
     }
     100% {
@@ -654,113 +680,113 @@ body {
 
 @-webkit-keyframes redRevive {
     from {
-        -webkit-transform: translate(-1rem, 0rem);
+        
         transform: translate(-1rem, 0rem);
     }
     to {
-        -webkit-transform: translate(-1rem, -6rem);
+        
         transform: translate(-1rem, -6rem);
     }
 }
 
 @keyframes redRevive {
     from {
-        -webkit-transform: translate(-1rem, 0rem);
+        
         transform: translate(-1rem, 0rem);
     }
     to {
-        -webkit-transform: translate(-1rem, -6rem);
+        
         transform: translate(-1rem, -6rem);
     }
 }
 
 @-webkit-keyframes pinkRevive {
     0% {
-        -webkit-transform: translate(-1rem, 0rem);
+        
         transform: translate(-1rem, 0rem);
     }
     20% {
-        -webkit-transform: translate(-1rem, 2rem);
+        
         transform: translate(-1rem, 2rem);
     }
     100% {
-        -webkit-transform: translate(-1rem, -6rem);
+        
         transform: translate(-1rem, -6rem);
     }
 }
 
 @keyframes pinkRevive {
     0% {
-        -webkit-transform: translate(-1rem, 0rem);
+        
         transform: translate(-1rem, 0rem);
     }
     20% {
-        -webkit-transform: translate(-1rem, 2rem);
+        
         transform: translate(-1rem, 2rem);
     }
     100% {
-        -webkit-transform: translate(-1rem, -6rem);
+        
         transform: translate(-1rem, -6rem);
     }
 }
 
 @-webkit-keyframes blueRevive {
     0%, 80% {
-        -webkit-transform: translate(-1rem, 0rem);
+        
         transform: translate(-1rem, 0rem);
     }
     4%, 20%, 36%, 52%, 68% {
-        -webkit-transform: translate(-1rem, -2rem);
+        
         transform: translate(-1rem, -2rem);
     }
     12%, 28%, 44%, 60%, 76% {
-        -webkit-transform: translate(-1rem, 2rem);
+        
         transform: translate(-1rem, 2rem);
     }
     88% {
-        -webkit-transform: translate(3rem, 0rem);
+        
         transform: translate(3rem, 0rem);
     }
     100% {
-        -webkit-transform: translate(3rem, -6rem);
+        
         transform: translate(3rem, -6rem);
     }
 }
 
 @keyframes blueRevive {
     0%, 80% {
-        -webkit-transform: translate(-1rem, 0rem);
+        
         transform: translate(-1rem, 0rem);
     }
     4%, 20%, 36%, 52%, 68% {
-        -webkit-transform: translate(-1rem, -2rem);
+        
         transform: translate(-1rem, -2rem);
     }
     12%, 28%, 44%, 60%, 76% {
-        -webkit-transform: translate(-1rem, 2rem);
+        
         transform: translate(-1rem, 2rem);
     }
     88% {
-        -webkit-transform: translate(3rem, 0rem);
+        
         transform: translate(3rem, 0rem);
     }
     100% {
-        -webkit-transform: translate(3rem, -6rem);
+        
         transform: translate(3rem, -6rem);
     }
 }
 
 @-webkit-keyframes orangeRevive {
     0%, 93.3% {
-        -webkit-transform: translate(-1rem, 0);
+        
         transform: translate(-1rem, 0);
     }
     1.3%, 6.6%, 12%, 17.3%, 22.6%, 28%, 33.3%, 38.6%, 44%, 49.3%, 54.6%, 60%, 65.3%, 70.6%, 76%, 81.3%, 86.6%, 92% {
-        -webkit-transform: translate(-1rem, -2rem);
+        
         transform: translate(-1rem, -2rem);
     }
     4%, 9.3%, 14.6%, 20%, 25.3%, 30.6%, 36%, 41.3%, 46.6%, 52%, 57.3%, 62.6%, 68%, 73.3%, 78.6%, 84%, 89.3% {
-        -webkit-transform: translate(-1rem, 2rem);
+        
         transform: translate(-1rem, 2rem);
     }
     96% {
@@ -775,15 +801,15 @@ body {
 
 @keyframes orangeRevive {
     0%, 93.3% {
-        -webkit-transform: translate(-1rem, 0);
+        
         transform: translate(-1rem, 0);
     }
     1.3%, 6.6%, 12%, 17.3%, 22.6%, 28%, 33.3%, 38.6%, 44%, 49.3%, 54.6%, 60%, 65.3%, 70.6%, 76%, 81.3%, 86.6%, 92% {
-        -webkit-transform: translate(-1rem, -2rem);
+        
         transform: translate(-1rem, -2rem);
     }
     4%, 9.3%, 14.6%, 20%, 25.3%, 30.6%, 36%, 41.3%, 46.6%, 52%, 57.3%, 62.6%, 68%, 73.3%, 78.6%, 84%, 89.3% {
-        -webkit-transform: translate(-1rem, 2rem);
+        
         transform: translate(-1rem, 2rem);
     }
     96% {

@@ -7,6 +7,9 @@ const lives = document.getElementById("lives");
 const gameOverScreen = document.getElementById("game-over-screen");
 const finalScoreValue = document.getElementById("final-score-value");
 const restartButton = document.getElementById("restart-button");
+const gameWinScreen = document.getElementById("game-win-screen");
+const finalWinScoreValue = document.getElementById("final-win-score-value");
+const replayButton = document.getElementById("replay-button");
 
 const root = document.documentElement.style;
 
@@ -931,20 +934,30 @@ function gameWin() {
     setTimeout(() => {
         for (let element of elements) {
             if (element.classList.contains("wall")) {
-                element.classList.add("blinking-animation")
+                element.classList.add("blinking-animation");
                 element.style.backgroundColor = "black";
-
             } else if (element.classList.contains("wall-empty")) {
-                element.classList.add("blinking-animation-corner")
+                element.classList.add("blinking-animation-corner");
             }
         }
         setTimeout(() => {
-            game.style.visibility = "hidden";
-            deleteGameBoard();
-            setTimeout(startLevel, 500)
-        }, 1500)
-    }, 2000)
+            game.style.display = "none";
+            gameWinScreen.style.display = "flex"; // Afficher l'écran de victoire
+            finalWinScoreValue.textContent = `${score} KWc`; // Afficher le score final
+        }, 1500);
+    }, 2000);
 }
+function replayGame() {
+    gameWinScreen.style.display = "none";
+    game.style.display = "block"; // Réafficher le jeu
+    hardReset(); // Réinitialiser vies et score
+    deleteGameBoard(); // Supprimer l'ancien plateau
+    game.style.visibility = "hidden";
+    setTimeout(startLevel, 500); // Relancer le niveau
+}
+
+// Ajoute l'écouteur d'événement pour le bouton replay
+replayButton.addEventListener("click", replayGame);
 
 function stopAnimations(stop) {
     freezeCharacters(stop);
@@ -1022,7 +1035,7 @@ function handleTouchStart(e) {
     const firstTouch = e.touches[0];
     xDown = firstTouch.clientX;
     yDown = firstTouch.clientY;
-};
+}
 
 function handleTouchMove(e) {
     if (!xDown || !yDown) {
@@ -1048,4 +1061,4 @@ function handleTouchMove(e) {
     }
     xDown = null;
     yDown = null;
-};
+}
