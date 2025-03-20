@@ -100,12 +100,12 @@ body {
 
 /* OBJECTS AND WALLS  */
 .wall {
-    background-image: url("map.png");
+    background-image: url("assets/map.png");
     z-index: 1;
 }
 @media (max-width: 600px), (max-height: 700px) {
     .wall {
-        background-image: url("small_map.png");
+        background-image: url("assets/small_map.png");
     }
 }
 
