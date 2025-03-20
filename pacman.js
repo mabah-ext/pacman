@@ -604,13 +604,12 @@ function getSprite(i) {
         if (characters[i].mode == "normal") {
             spriteUrl = `./assets/ghost.svg`;
         } else if (characters[i].mode == "frightened") {
-            spriteUrl = './assets/ghost-frightened.svg'; // SVG unique pour l'état effrayé
-            // Si tu as deux états (bleu et blanc), tu peux utiliser isFrightenedWhite
+            spriteUrl = './assets/ghost-frightened.svg';
             if (isFrightenedWhite) {
-                spriteUrl = './assets/ghost-frightened-white.svg'; // Par exemple
+                spriteUrl = './assets/ghost-frightened-white.svg';
             }
         } else if (characters[i].mode == "eaten") {
-            spriteUrl = './assets/ghost-eaten.svg'; // SVG pour l'état mangé
+            spriteUrl = './assets/ghost-eaten.svg';
         }
         characters[i].characterNode.style.content = `url(${spriteUrl})`;
 
@@ -687,7 +686,7 @@ function eatPoint(i) {
             }
         }
 
-        scoreElement.innerHTML = `${playerName}'s Score: ${score} KWc`; // Mise à jour avec le nom
+        scoreElement.innerHTML = `${playerName}'s Score: ${score} KWc`;
         point.remove();
 
         if (points == 244) {
@@ -872,7 +871,6 @@ function ghostRevive(i, progress) {
     }
 }
 
-// Fonction gameOver modifiée
 function gameOver() {
     stopAnimations();
     setTimeout(() => {
@@ -911,17 +909,15 @@ function gameOver() {
     }, 1000);
 }
 
-// Fonction restartGame corrigée
 function restartGame() {
     gameOverScreen.style.display = "none";
-    game.style.display = "block"; // Réafficher le jeu
-    hardReset(); // Réinitialiser vies et score
-    deleteGameBoard(); // Supprimer l'ancien plateau
+    game.style.display = "block";
+    hardReset();
+    deleteGameBoard();
     game.style.visibility = "hidden";
-    setTimeout(startLevel, 500); // Relancer le niveau
+    setTimeout(startLevel, 500);
 }
 
-// Ajouter l'écouteur d'événement (assure-toi qu'il est bien placé après les définitions de fonctions)
 restartButton.addEventListener("click", restartGame);
 
 function gameWin() {
@@ -954,14 +950,13 @@ function gameWin() {
 
 function replayGame() {
     gameWinScreen.style.display = "none";
-    game.style.display = "block"; // Réafficher le jeu
-    hardReset(); // Réinitialiser vies et score
-    deleteGameBoard(); // Supprimer l'ancien plateau
+    game.style.display = "block";
+    hardReset();
+    deleteGameBoard();
     game.style.visibility = "hidden";
-    setTimeout(startLevel, 500); // Relancer le niveau
+    setTimeout(startLevel, 500);
 }
 
-// Ajoute l'écouteur d'événement pour le bouton replay
 replayButton.addEventListener("click", replayGame);
 
 function stopAnimations(stop) {

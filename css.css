@@ -204,7 +204,7 @@ body {
 }
 
 #game-win-screen h1 {
-    color: #FCB814; /* Jaune Pacman pour la victoire */
+    color: #FCB814;
     font-size: 6rem;
     margin: 2rem;
     text-shadow: 0 0 10px #FCB814;
@@ -220,7 +220,7 @@ body {
     margin-top: 2rem;
     padding: 1.5rem 3rem;
     font-size: 2.5rem;
-    background-color: #00FF00; /* Vert pour la victoire */
+    background-color: #00FF00;
     color: #000000;
     border: none;
     border-radius: 1rem;
@@ -360,12 +360,12 @@ body {
 
 /* Styles pour Pacman */
 .yellow-visible {
-    content: url('assets/pacman.svg'); /* Remplacez par le chemin de votre image */
+    content: url('assets/pacman.svg');
 }
 
 /* Styles pour les fantômes */
 .red-visible {
-    content: url('assets/ghost.svg'); /* Remplacez par le chemin de votre image */
+    content: url('assets/ghost.svg');
 }
 
 .pink-visible {
