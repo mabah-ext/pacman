@@ -435,6 +435,52 @@ body {
     animation: 1.5s forwards steps(1, end) blink2;
 }
 
+/* Animation de rétrécissement et désintégration */
+.yellow-shrink-disintegrate {
+    -webkit-animation: 2s forwards linear yellowShrinkDisintegrate;
+    animation: 2s forwards linear yellowShrinkDisintegrate;
+}
+
+@-webkit-keyframes yellowShrinkDisintegrate {
+    0% {
+        transform: scale(1); /* Taille normale */
+        opacity: 1;
+    }
+    50% {
+        transform: scale(0.5); /* Rétrécissement à 50% */
+        opacity: 1;
+    }
+    75% {
+        transform: scale(0.2); /* Rétrécissement supplémentaire */
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(0); /* Disparition totale */
+        opacity: 0; /* Désintégration complète */
+        visibility: hidden;
+    }
+}
+
+@keyframes yellowShrinkDisintegrate {
+    0% {
+        transform: scale(1); /* Taille normale */
+        opacity: 1;
+    }
+    50% {
+        transform: scale(0.5); /* Rétrécissement à 50% */
+        opacity: 1;
+    }
+    75% {
+        transform: scale(0.2); /* Rétrécissement supplémentaire */
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(0); /* Disparition totale */
+        opacity: 0; /* Désintégration complète */
+        visibility: hidden;
+    }
+}
+
 @-webkit-keyframes yellow {
     0%, 70%, 100% {
         background-position: -3.2rem var(--yellow-sprite-y);

@@ -895,7 +895,9 @@ function gameOver() {
             characters[i].characterNode.classList.remove(`${characters[i].name}-visible`);
         }
 
-        characters[0].characterNode.classList.add("yellow-death-animation");
+        // Remplace l'animation de mort par une animation de rétrécissement et désintégration
+        characters[0].characterNode.classList.add("yellow-shrink-disintegrate");
+
         sound.src = "audio/death_1.wav";
         sound.play();
         setTimeout(() => {
@@ -904,20 +906,20 @@ function gameOver() {
         }, 1400);
 
         setTimeout(() => {
-            if (livesLost === 3) { // Game Over complet seulement quand toutes les vies sont perdues
+            if (livesLost === 3) { // Game Over complet quand toutes les vies sont perdues
                 game.style.display = "none";
                 gameOverScreen.style.display = "flex";
                 finalScoreValue.textContent = `${score} KWc`;
                 newLevel = true;
             } else {
-                // Si ce n'est pas la dernière vie, on relance juste le niveau
+                // Relance le niveau si ce n'est pas la dernière vie
                 newLevel = false;
                 gameStartLength = 2000;
                 game.style.visibility = "hidden";
                 deleteClasses();
                 setTimeout(startLevel, 500);
             }
-        }, 1500);
+        }, 2000); // Augmente légèrement le délai pour correspondre à la durée de la nouvelle animation
     }, 1000);
 }
 
