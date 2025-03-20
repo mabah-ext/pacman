@@ -34,24 +34,7 @@ const oppositeDirection = {
     "ArrowRight": "ArrowLeft",
     "ArrowLeft": "ArrowRight",
 }
-const yellowSprite = {
-    "ArrowRight": 0,
-    "ArrowLeft": 3.2,
-    "ArrowUp": 6.4,
-    "ArrowDown": 9.6,
-}
-const ghostSprite = {
-    "ArrowRight": 0,
-    "ArrowLeft": 6.4,
-    "ArrowUp": 12.8,
-    "ArrowDown": 19.2,
-}
-const eatenSprite = {
-    "ArrowRight": 25.6,
-    "ArrowLeft": 28.8,
-    "ArrowUp": 32,
-    "ArrowDown": 35.2,
-}
+
 const characters = [{
     name: "yellow",
     direction: "ArrowLeft",
@@ -133,7 +116,6 @@ let newLevel = true;
 let score = 0;
 let livesLost = 0;
 let gameStartLength = 4200;
-let whichMunch = 1;
 let pacmanSpeedFactor = 1.5;
 
 document.addEventListener("click", startGame);
@@ -179,22 +161,6 @@ function startLevel() {
 }
 
 function makeLevel() {
-    const gameClass = {
-        0: "blank",
-        1: "left-right wall",
-        2: "top-bottom wall",
-        3: "top-right wall",
-        4: "top-left wall",
-        5: "bottom-right wall",
-        6: "bottom-left wall",
-        7: "top wall",
-        8: "bottom wall",
-        9: "right wall",
-        10: "left wall",
-        11: "gate wall",
-        12: "wall-empty"
-    }
-
 
     const gameArray = [0, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 18, 19, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 1,
         9, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 11, 13, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 9,
@@ -958,6 +924,7 @@ function gameWin() {
         }, 1500);
     }, 2000);
 }
+
 function replayGame() {
     gameWinScreen.style.display = "none";
     game.style.display = "block"; // Réafficher le jeu
