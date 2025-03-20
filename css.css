@@ -358,7 +358,6 @@ body {
 
 /* Animations */
 .yellow-animation-move {
-    -webkit-animation: var(--yellow-animation-length) forwards steps(1, end) yellow;
     animation: var(--yellow-animation-length) forwards steps(1, end) yellow;
 }
 

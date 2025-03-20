@@ -134,6 +134,7 @@ let score = 0;
 let livesLost = 0;
 let gameStartLength = 4200;
 let whichMunch = 1;
+let pacmanSpeedFactor = 1.5;
 
 document.addEventListener("click", startGame);
 
@@ -559,7 +560,7 @@ function calculateDistance(target, newGhostPosition) {
 function getAnimationLength(i) {
     let animationLength;
     if (i == 0) {
-        animationLength = characters[i].mode == "hasEaten" ? 210 : 190;
+        animationLength = characters[i].mode == "hasEaten" ? (210 / pacmanSpeedFactor) : (190 / pacmanSpeedFactor);
     } else {
         const tunnel = [392, 393, 394, 395, 396, 419, 418, 417, 416, 415]
 
