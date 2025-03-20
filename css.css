@@ -301,14 +301,14 @@ body {
 }
 
 .point {
-    content: url('./assets/point.svg');
+    content: url('assets/point.svg');
     width: 1rem;
     height: 1rem;
     border: .8rem solid black;
 }
 
 .big-point {
-    content: url('./assets/big-point.svg');
+    content: url('assets/big-point.svg');
     width: 3rem;
     height: 3rem;
     position: absolute;
@@ -360,28 +360,28 @@ body {
 
 /* Styles pour Pacman */
 .yellow-visible {
-    content: url('./assets/pacman.svg'); /* Remplacez par le chemin de votre image */
+    content: url('assets/pacman.svg'); /* Remplacez par le chemin de votre image */
 }
 
 /* Styles pour les fantômes */
 .red-visible {
-    content: url('./assets/ghost.svg'); /* Remplacez par le chemin de votre image */
+    content: url('assets/ghost.svg'); /* Remplacez par le chemin de votre image */
 }
 
 .pink-visible {
-    content: url('./assets/ghost.svg');
+    content: url('assets/ghost.svg');
 }
 
 .blue-visible {
-    content: url('./assets/ghost.svg');
+    content: url('assets/ghost.svg');
 }
 
 .orange-visible {
-    content: url('./assets/ghost.svg');
+    content: url('assets/ghost.svg');
 }
 
 .yellow-visible {
-    content: url('./assets/pacman.svg');
+    content: url('assets/pacman.svg');
 }
 
 .red-visible {
