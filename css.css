@@ -19,7 +19,7 @@ body {
 
     box-sizing: border-box;
     margin: 0;
-    background-color: #000000;
+    background-color: #202E84;
     min-height: 100vh;
     -webkit-box-align: center;
     -ms-flex-align: center;
@@ -121,6 +121,59 @@ body {
     width: 6rem;
 }
 
+.score-table {
+    margin-top: 2rem;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: "joystick", Arial, sans-serif;
+}
+
+.score-table h3 {
+    color: #FCB814;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.score-table p {
+    font-size: 2rem;
+    margin: 0.5rem 0;
+}
+
+.score-table span {
+    color: #FFCC00;
+}
+
+#player-name-input {
+    margin: 10px 0;
+    padding: 8px;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    text-align: center;
+}
+
+#player-name-input::placeholder {
+    color: #ccc;
+}
+
+#start-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #ffcc00;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#start-button:hover {
+    background-color: #e6b800;
+}
+
 #start {
     position: absolute;
     margin: auto;
@@ -146,7 +199,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: #202E84;
     z-index: 1000;
 }
 
@@ -259,7 +312,6 @@ body {
     width: 3rem;
     height: 3rem;
     position: absolute;
-    z-index: 1000;
 }
 
 /* CHARACTERS */
@@ -284,7 +336,6 @@ body {
     background-position: var(--yellow-sprite-x) var(--yellow-sprite-y);
 }
 
-.yellow-visible,
 .red-visible,
 .pink-visible,
 .blue-visible,
@@ -292,6 +343,19 @@ body {
     width: 3rem;
     height: 3rem;
     position: absolute;
+    z-index: 2000;
+}
+
+.yellow-visible {
+    z-index: 2001;
+}
+
+.point {
+    z-index: 500;
+}
+
+.big-point {
+    z-index: 1000;
 }
 
 /* Styles pour Pacman */
@@ -318,30 +382,24 @@ body {
 
 .yellow-visible {
     content: url('./assets/pacman.svg');
-    z-index: 100;
 }
 
 .red-visible {
     background-position: var(--red-sprite-x) var(--red-sprite-y);
     -webkit-transition: -webkit-transform var(--red-animation-length) linear;
     transition: -webkit-transform var(--red-animation-length) linear;
-
-
-    z-index: 104;
 }
 
 .pink-visible {
     background-position: var(--pink-sprite-x) var(--pink-sprite-y);
     -webkit-transition: -webkit-transform var(--pink-animation-length) linear;
     transition: -webkit-transform var(--pink-animation-length) linear;
-    z-index: 103;
 }
 
 .blue-visible {
     background-position: var(--blue-sprite-x) var(--blue-sprite-y);
     -webkit-transition: -webkit-transform var(--blue-animation-length) linear;
     transition: -webkit-transform var(--blue-animation-length) linear;
-    z-index: 102;
 }
 
 .orange-visible {

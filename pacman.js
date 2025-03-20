@@ -6,6 +6,7 @@ const scoreElement = document.getElementById("score");
 const lives = document.getElementById("lives");
 const gameOverScreen = document.getElementById("game-over-screen");
 const finalScoreValue = document.getElementById("final-score-value");
+const startButton = document.getElementById("start-button");
 const restartButton = document.getElementById("restart-button");
 const gameWinScreen = document.getElementById("game-win-screen");
 const finalWinScoreValue = document.getElementById("final-win-score-value");
@@ -118,14 +119,22 @@ let livesLost = 0;
 let gameStartLength = 4200;
 let pacmanSpeedFactor = 1.5;
 
+let playerName = "Player";
+
 document.addEventListener("click", startGame);
 
 function startGame() {
+    document.body.style.backgroundColor = "#000000";
+    const nameInput = document.getElementById("player-name-input").value.trim();
+    if (nameInput) {
+        playerName = nameInput;
+    }
     gameStart.style.display = "none";
-    game.style.display = "block ";
+    game.style.display = "block";
     startLevel();
-    document.removeEventListener("click", startGame)
 }
+
+startButton.addEventListener("click", startGame);
 
 soundtrack.addEventListener('timeupdate', () => {
     var buffer = 0.3;
@@ -158,6 +167,15 @@ function startLevel() {
         collisionInterval = setInterval(checkCollisions, 10)
         ghostModeInterval = setTimeout(changeModes, 5000);
     }, gameStartLength)
+}
+
+function updateHighScore() {
+    let highScore = localStorage.getItem("pacmanHighScore") ? parseInt(localStorage.getItem("pacmanHighScore")) : 0;
+    if (score > highScore) {
+        highScore = score;
+        localStorage.setItem("pacmanHighScore", highScore);
+    }
+    return highScore;
 }
 
 function makeLevel() {
@@ -246,8 +264,8 @@ function setStartingProperties() {
         characters[i].status = "normal";
 
         if (i == 0) {
-            root.setProperty(`--${characters[i].name}-sprite-x`, "-6.4rem")
-            root.setProperty(`--${characters[i].name}-sprite-y`, "0rem")
+            root.setProperty(`--${characters[i].name}-sprite-x`, "-6.4rem");
+            root.setProperty(`--${characters[i].name}-sprite-y`, "0rem");
             characters[i].directionNew = undefined;
         } else {
             getSprite(i);
@@ -264,9 +282,8 @@ function setStartingProperties() {
             characters[i].characterNode.classList.add(`${characters[i].name}-revive`);
         }
         start.style.display = "none";
-
         getSprite(0);
-    }, gameStartLength)
+    }, gameStartLength);
 }
 
 //Transform has to be set before class visible is added in setStartingProperties cause transform will transition instead of changing instantly
@@ -670,7 +687,7 @@ function eatPoint(i) {
             }
         }
 
-        scoreElement.innerHTML = "Score " + score + " KWc";
+        scoreElement.innerHTML = `${playerName}'s Score: ${score} KWc`; // Mise à jour avec le nom
         point.remove();
 
         if (points == 244) {
@@ -684,6 +701,8 @@ function eatPoint(i) {
         }
     }
 }
+
+document.removeEventListener("click", startGame);
 
 function makeGhostsScared() {
     soundtrack.src = "audio/power_pellet.wav";
@@ -861,7 +880,6 @@ function gameOver() {
             characters[i].characterNode.classList.remove(`${characters[i].name}-visible`);
         }
 
-        // Remplace l'animation de mort par une animation de rétrécissement et désintégration
         characters[0].characterNode.classList.add("yellow-shrink-disintegrate");
 
         sound.src = "audio/death_1.wav";
@@ -872,20 +890,24 @@ function gameOver() {
         }, 1400);
 
         setTimeout(() => {
-            if (livesLost === 3) { // Game Over complet quand toutes les vies sont perdues
+            if (livesLost === 3) {
                 game.style.display = "none";
                 gameOverScreen.style.display = "flex";
-                finalScoreValue.textContent = `${score} KWc`;
+                finalScoreValue.textContent = `${playerName}'s Score: ${score} KWc`;
+
+                // Mettre à jour et afficher le tableau de scores
+                const highScore = updateHighScore();
+                document.getElementById("player-score-over").textContent = `${playerName}: ${score} KWc`;
+                document.getElementById("high-score-over").textContent = `${highScore} KWc`;
                 newLevel = true;
             } else {
-                // Relance le niveau si ce n'est pas la dernière vie
                 newLevel = false;
                 gameStartLength = 2000;
                 game.style.visibility = "hidden";
                 deleteClasses();
                 setTimeout(startLevel, 500);
             }
-        }, 2000); // Augmente légèrement le délai pour correspondre à la durée de la nouvelle animation
+        }, 2000);
     }, 1000);
 }
 
@@ -919,8 +941,13 @@ function gameWin() {
         }
         setTimeout(() => {
             game.style.display = "none";
-            gameWinScreen.style.display = "flex"; // Afficher l'écran de victoire
-            finalWinScoreValue.textContent = `${score} KWc`; // Afficher le score final
+            gameWinScreen.style.display = "flex";
+            finalWinScoreValue.textContent = `${playerName}'s Score: ${score} KWc`;
+
+            // Mettre à jour et afficher le tableau de scores
+            const highScore = updateHighScore();
+            document.getElementById("player-score-win").textContent = `${playerName}: ${score} KWc`;
+            document.getElementById("high-score-win").textContent = `${highScore} KWc`;
         }, 1500);
     }, 2000);
 }
@@ -979,6 +1006,7 @@ function deleteClasses() {
 function hardReset() {
     livesLost = 0;
     score = 0;
+    document.body.style.backgroundColor = "#000000";
 
     setTimeout(() => {
         for (let i = 0; i < 3; i++) {

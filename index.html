@@ -14,7 +14,9 @@
 <body>
 <div id="game-start">
     <img class="feedgy-logo" src="./assets/feedgy.svg" alt="feedgy">
-    <h3>click Anywhere to play</h3>
+    <h3>Enter your name and Start</h3>
+    <input type="text" id="player-name-input" placeholder="Your Name" maxlength="15" />
+    <button id="start-button">Start</button>
     <div class="suns">
         <img class="sun" src="./assets/sunny.svg" alt="Sun">
         <img class="sun" src="./assets/sunny.svg" alt="Sun">
@@ -41,11 +43,22 @@
 <div id="game-over-screen" class="game-screen">
     <h1>Game Over</h1>
     <div class="final-score">Score: <span id="final-score-value">0 KWc</span></div>
+    <div id="score-table-over" class="score-table">
+        <h3>Scoreboard</h3>
+        <p>Your Score: <span id="player-score-over"></span></p>
+        <p>High Score: <span id="high-score-over"></span></p>
+    </div>
     <button id="restart-button">Play Again</button>
 </div>
+
 <div id="game-win-screen" class="game-screen">
     <h1>You Win!</h1>
     <div class="final-score">Score: <span id="final-win-score-value">0 KWc</span></div>
+    <div id="score-table-win" class="score-table">
+        <h3>Scoreboard</h3>
+        <p>Your Score: <span id="player-score-win"></span></p>
+        <p>High Score: <span id="high-score-win"></span></p>
+    </div>
     <button id="replay-button">Play Again</button>
 </div>
 <script src="pacman.js"></script>
